@@ -42,7 +42,7 @@ class UsuarioController extends Controller
             'password_hash' => bcrypt($request->password),
             'tipo_documento' => $request->tipo_documento,
             'numero_documento' => $request->numero_documento,
-            'estado' => $request->estado,
+            'estado' => 1,
             'telefono' => $request->telefono,
             'rol_id' => $request->rol_id,
             'area_id' => $request->area_id

@@ -84,14 +84,14 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('ambientes.*') ? 'active' : '' }}" 
                     href="{{ route('ambientes.index') }}">
-                        <i class="bi bi-people"></i> Ambientes
+                        <i class="bi bi-shield-lock "></i> Ambientes
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('usuarios.*') ? 'active' : '' }}" 
                     href="{{ route('usuarios.menu') }}">
-                        <i class="bi bi-shield-lock"></i> Usuarios
+                        <i class="bi bi-people"></i> Usuarios
                     </a>
                 </li>
 
@@ -99,6 +99,13 @@
                     <a class="nav-link {{ request()->routeIs('inventario.*') ? 'active' : '' }}" 
                     href="{{ route('inventario.menu') }}">
                         <i class="bi bi-box-seam"></i> Inventario
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('logs.*') ? 'active' : '' }}" 
+                    href="{{ route('logs.index') }}">
+                        <i class="bi bi-clock-history"></i> Logs
                     </a>
                 </li>
 
@@ -115,9 +122,24 @@
                         Sistema Inteligente de Control y Trazabilidad
                     </span>
 
-                    <div>
-                        <i class="bi bi-person-circle"></i> Usuario
-                    </div>
+                <div class="d-flex align-items-center gap-3">
+                    @if(session()->has('usuario'))
+                        <div class="d-flex align-items-center gap-3">
+                            <span>
+                                <i class="bi bi-person-circle"></i> 
+                                {{ session('usuario')->nombre }}
+                            </span>
+
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button class="btn btn-sm btn-light">
+                                    <i class="bi bi-box-arrow-right"></i> Salir
+                                </button>
+                            </form>
+                        </div>
+                    @endif
+
+                </div>
                 </div>
             </nav>
 

@@ -2,7 +2,12 @@
 @section('content')
 
 <div class="container">
-    <h2>Crear Elemento</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Nuevo Elemento</h2>
+    <a href="{{ route('elementos.index') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Volver
+    </a>
+</div>
 
     <form action="{{ route('elementos.store') }}" method="POST">
         @csrf

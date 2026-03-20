@@ -83,6 +83,23 @@
             </div>
         </a>
     </div>
+
+    <div class="col-md-3">
+        <a href="{{ route('logs.index') }}" style="text-decoration: none;">
+            <div class="card shadow card-custom h-100 hover-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-building fs-1 text-success"></i>
+                    <h5 class="mt-3">Logs de Acceso</h5>
+                    <p class="text-muted">Consulta de Logs</p>
+
+                    <hr>
+
+                    <h4 class="text-success">{{ $totalLogAcceso }}</h4>
+                    <small class="text-muted">Logs registrados</small>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
 
 @endsection

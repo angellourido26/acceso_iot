@@ -8,6 +8,7 @@ use App\Models\Usuario;
 use App\Models\Role;
 use App\Models\Elemento;
 use App\Models\TipoElemento;
+use App\Models\LogAcceso;
 
 class DashboardController extends Controller
 {
@@ -19,6 +20,7 @@ class DashboardController extends Controller
         $totalRoles = Role::count();
         $totalElementos = Elemento::count();
         $totalTipos = TipoElemento::count();
+        $totalLogAcceso = LogAcceso::count();
 
         return view('dashboard', compact(
             'totalAreas',
@@ -26,7 +28,8 @@ class DashboardController extends Controller
             'totalUsuarios',
             'totalRoles',
             'totalElementos',
-            'totalTipos'
+            'totalTipos',
+            'totalLogAcceso'
         ));
     }
 }

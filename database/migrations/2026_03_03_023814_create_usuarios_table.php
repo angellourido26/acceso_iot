@@ -19,8 +19,9 @@ return new class extends Migration
             $table->text('password_hash');
             $table->string('tipo_documento', 50);
             $table->string('numero_documento', 11);
-            $table->string('estado', 30);
+            $table->boolean('estado')->default(1);
             $table->string('telefono', 20);
+            $table->rememberToken();
 
             $table->foreignId('rol_id')->nullable()->constrained('roles')->onDelete('set null');
             $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');

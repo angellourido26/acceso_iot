@@ -21,4 +21,14 @@ class Ambiente extends Model
     {
         return $this->belongsTo(Area::class);
     }
+    
+        public function elementos()
+    {
+        return $this->hasMany(Elemento::class);
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(LogAcceso::class);
+    }
 }

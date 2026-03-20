@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     protected $table = 'usuarios';
 
@@ -21,6 +21,15 @@ class Usuario extends Model
         'area_id'
     ];
 
+    protected $hidden = [
+        'password_hash'
+    ];
+
+    public function getAuthPassword()
+    {
+        return $this->password_hash;
+    }
+
     public function rol()
     {
         return $this->belongsTo(Role::class);
@@ -29,5 +38,15 @@ class Usuario extends Model
     public function area()
     {
         return $this->belongsTo(Area::class);
+    }
+
+        public function credenciales()
+    {
+        return $this->hasMany(Credencial::class);
+    }
+    
+    public function logs()
+    {
+        return $this->hasMany(LogAcceso::class);
     }
 }
