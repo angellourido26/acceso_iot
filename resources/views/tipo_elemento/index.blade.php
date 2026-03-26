@@ -40,9 +40,9 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" 
-                                        class="btn btn-danger btn-sm">
-                                    Eliminar
+                                <button type="submit" class="btn btn-danger btn-sm" 
+                                        onclick="return confirm('¿Eliminar este tipo de elemento?')">
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>

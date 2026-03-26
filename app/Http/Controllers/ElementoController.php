@@ -23,8 +23,8 @@ class ElementoController extends Controller
      */
     public function create()
     {
-         $tipos = TipoElemento::all();
-    $ambientes = Ambiente::all();
+        $tipos = TipoElemento::all();
+        $ambientes = Ambiente::all();
 
     return view('elementos.create', compact('tipos','ambientes'));
     }
@@ -107,6 +107,10 @@ public function update(Request $request, $id)
      */
     public function destroy(string $id)
     {
-        //
+        $elemento = Elemento::findOrFail($id);
+        $elemento->delete();
+
+        return redirect()->route('elementos.index')
+            ->with('success', 'Elemento eliminado correctamente');
     }
 }

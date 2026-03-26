@@ -66,13 +66,13 @@
 
                     <select name="estado" class="form-control">
 
-                        <option value="Activo"
-                        {{ $usuario->estado == 'Activo' ? 'selected' : '' }}>
+                        <option value="1"
+                        {{ $usuario->estado == '1' ? 'selected' : '' }}>
                         Activo
                         </option>
 
-                        <option value="Inactivo"
-                        {{ $usuario->estado == 'Inactivo' ? 'selected' : '' }}>
+                        <option value="0"
+                        {{ $usuario->estado == '0' ? 'selected' : '' }}>
                         Inactivo
                         </option>
 

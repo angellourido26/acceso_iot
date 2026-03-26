@@ -1,5 +1,4 @@
 @extends('layout')
-
 @section('content')
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
@@ -7,13 +6,14 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 <form method="GET">
-
+<div>
     <label>Filtrar por fecha</label>
         <input type="date" name="fecha" value="{{ $fecha }}">
     <button class="btn btn-success">
         Filtrar
     </button>
-
+</div>
+<br>
 <table id="tablaLogs" class="table table-striped">
     <thead>
         <tr>

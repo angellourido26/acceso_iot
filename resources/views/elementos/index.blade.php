@@ -37,7 +37,21 @@
                         <td>{{ $elemento->serial_placa_sena }}</td>
                         <td>
                             <a href="{{ route('elementos.edit', $elemento->id) }}"
-                            class="btn btn-warning btn-sm">Editar</a>
+                            class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <form action="{{ route('elementos.destroy', $elemento->id) }}" 
+                                method="POST" 
+                                style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger btn-sm" 
+                                        onclick="return confirm('¿Eliminar este elemento?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

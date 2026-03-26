@@ -41,14 +41,15 @@
             <td>{{ $usuario->area->nombre ?? 'Sin área' }}</td>
         <td>
             <a href="{{ route('usuarios.edit',$usuario->id) }}" class="btn btn-warning btn-sm">
-                Editar
+                <i class="bi bi-pencil"></i>
             </a>
             <form action="{{ route('usuarios.destroy',$usuario->id) }}" method="POST" style="display:inline">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger btn-sm">
-                    Eliminar
-                </button>
+                    <button class="btn btn-danger btn-sm"
+                            onclick="return confirm('¿Eliminar este usuario?')">
+                        <i class="bi bi-trash"></i>
+                    </button>
             </form>
         </td>
         </tr>

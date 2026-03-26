@@ -20,7 +20,7 @@
     <input type="password" name="password" placeholder="Contraseña" class="form-control mb-2">
     <select name="tipo_documento" class="form-control mb-2">
         <option value="">Tipo Documento</option>
-        <option value="CC">Cédula</option>
+        <option value="CC">Cédula Ciudadania</option>
         <option value="TI">Tarjeta Identidad</option>
         <option value="CE">Cédula Extranjería</option>
     </select>

@@ -19,7 +19,7 @@
                 <label class="form-label">Nombre del Área</label>
                 <input type="text" name="nombre" 
                        class="form-control @error('nombre') is-invalid @enderror"
-                       placeholder="Ej: CEAI, CGTS, etc..">
+                       placeholder="Ej: Electricidad, TI, etc..">
 
                 @error('nombre')
                     <div class="invalid-feedback">

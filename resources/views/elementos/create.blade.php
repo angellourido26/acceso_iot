@@ -27,6 +27,18 @@
             </select>
         </div>
 
+
+        <div class="mb-3">
+            <label>Ambiente</label>
+                <select name="ambiente_id" class="form-control mb-2">
+                    <option value="">Seleccione Ambiente</option>
+                @foreach($ambientes as $ambiente)
+                    <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
+                @endforeach
+                </select>
+        </div>
+
+
         <div class="mb-3">
             <label>Estado</label>
             <input type="text" name="estado" class="form-control">
