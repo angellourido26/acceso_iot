@@ -11,10 +11,16 @@
     <div class="card p-4 shadow" style="width:350px;">
         <h4 class="text-center mb-3">Iniciar Sesión</h4>
 
+        @if(session('error'))
+            <div class="alert alert-danger text-center">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('login.post') }}">
             @csrf
 
-            <input type="email" name="correo" placeholder="Correo" class="form-control mb-2">
+            <input type="email" name="correo" value="{{ old('correo') }}" placeholder="Correo" class="form-control mb-2">
             <input type="password" name="password" placeholder="Contraseña" class="form-control mb-3">
 
             <button class="btn btn-success w-100">Ingresar</button>

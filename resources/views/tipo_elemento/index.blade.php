@@ -17,7 +17,7 @@
 
 <div class="card shadow">
     <div class="card-body">
-        <table class="table table-bordered table-hover">
+        <table id="tablaTipo" class="table table-bordered table-hover">
             <thead class="table-success">
                 <tr>
                     <th>ID</th>
@@ -54,3 +54,16 @@
 </div>
 
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#tablaTipo').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+        }
+    });
+});
+</script>

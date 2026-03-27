@@ -19,14 +19,21 @@ class AuthController extends Controller
     {
         $usuario = Usuario::where('correo', $request->correo)->first();
 
-        if ($usuario && Hash::check($request->password, $usuario->password_hash)) {
-
-            Session::put('usuario', $usuario);
-
-            return redirect()->route('dashboard');
+        if (!$usuario) {
+            return back()->with('error', 'El usuario no existe');
         }
 
-        return back()->with('error', 'Credenciales incorrectas');
+        if (!Hash::check($request->password, $usuario->password_hash)) {
+            return back()->with('error', 'Contraseña incorrecta');
+        }
+
+        if ($usuario->estado != 1) {
+            return back()->with('error', 'Usuario inactivo');
+        }
+
+        Session::put('usuario', $usuario);
+
+        return redirect()->route('dashboard');
     }
 
     public function logout()

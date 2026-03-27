@@ -11,6 +11,8 @@
     {{-- Icons --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
     <style>
         body {
             background-color: #F4F6F9;
@@ -125,10 +127,17 @@
                 <div class="d-flex align-items-center gap-3">
                     @if(session()->has('usuario'))
                         <div class="d-flex align-items-center gap-3">
-                            <span>
-                                <i class="bi bi-person-circle"></i> 
-                                {{ session('usuario')->nombre }}
-                            </span>
+                            
+                            <div class="text-end">
+                                <span>
+                                    <i class="bi bi-person-circle"></i> 
+                                    {{ session('usuario')->nombre }}
+                                </span>
+                                <br>
+                                <small class="text-end">
+                                    {{ session('usuario')->rol->nombre ?? 'Sin rol' }}
+                                </small>
+                            </div>
 
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
@@ -136,6 +145,7 @@
                                     <i class="bi bi-box-arrow-right"></i> Salir
                                 </button>
                             </form>
+
                         </div>
                     @endif
 
@@ -151,6 +161,9 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
 </body>
 </html>
