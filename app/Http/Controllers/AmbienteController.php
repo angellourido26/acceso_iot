@@ -8,10 +8,26 @@ use Illuminate\Http\Request;
 
 class AmbienteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ambientes = Ambiente::with('area')->orderBy('id', 'desc')->get();
-        return view('ambientes.index', compact('ambientes'));
+        $query = Ambiente::with('area');
+
+        if ($request->estado) {
+            $query->where('estado', $request->estado);
+        }
+
+        if ($request->area_id) {
+            $query->where('area_id', $request->area_id);
+        }
+
+        $query->orderByRaw("CASE WHEN estado = 'Activo' THEN 1 ELSE 2 END")
+              ->orderBy('id', 'desc');
+
+        $ambientes = $query->get();
+
+        $areas = \App\Models\Area::orderBy('nombre')->get();
+
+        return view('ambientes.index', compact('ambientes', 'areas'));
     }
 
     public function create()
