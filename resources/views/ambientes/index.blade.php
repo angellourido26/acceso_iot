@@ -17,6 +17,43 @@
 
 <div class="card shadow">
     <div class="card-body">
+        <form method="GET" class="mb-3">
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <label>Estado</label>
+                    <select name="estado" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="Activo" {{ request('estado') == 'Activo' ? 'selected' : '' }}>Activo</option>
+                        <option value="Inactivo" {{ request('estado') == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                        <option value="Mantenimiento" {{ request('estado') == 'Mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
+                    </select>
+
+                </div>
+
+                <div class="col-md-4">
+                    <label>Área</label>
+                    <select name="area_id" class="form-control">
+                        <option value="">Todas</option>
+                        @foreach($areas as $area)
+                            <option value="{{ $area->id }}" {{ request('area_id') == $area->id ? 'selected' : '' }}>
+                                {{ $area->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+                    <button class="btn btn-success w-100">
+                        Filtrar
+                    </button>
+
+                </div>
+
+            </div>
+        </form>
         <table id="tablaAmbientes" class="table table-bordered table-hover">
             <thead class="table-success">
                 <tr>
@@ -30,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($ambientes as $ambiente)
+                @foreach($ambientes as $ambiente)
                     <tr>
                         <td>{{ $ambiente->id }}</td>
                         <td>{{ $ambiente->nombre }}</td>
@@ -54,11 +91,7 @@
                             </form>
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="7" class="text-center">No hay ambientes registrados</td>
-                    </tr>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -73,8 +106,12 @@
 $(document).ready(function () {
     $('#tablaAmbientes').DataTable({
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-        }
+            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
+            emptyTable: "Los datos ingresados no coinciden",
+            zeroRecords: "No se encontraron resultados con ese filtro"
+        },
+        searching: false,
+        lengthMenu: [5, 10, 25, 50]
     });
 });
 </script>
